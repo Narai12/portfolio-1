@@ -1308,10 +1308,56 @@ footer {
 #development .skill-card .btn { margin-top: 18px; }
 @media(max-width:850px) { .nav-links { max-height:75vh; overflow-y:auto; } }
 
+
+/* ===== VISUAL UPGRADE: motion, depth and graphic accents ===== */
+:root { --ink:#102b24; --green:#1d7658; --mint:#a8e5c3; --gold:#e9ad77; }
+body { overflow-x:hidden; }
+#scrollProgress { position:fixed; inset:0 auto auto 0; height:3px; width:0; z-index:2000; background:linear-gradient(90deg,var(--mint),var(--gold)); box-shadow:0 0 14px rgba(168,229,195,.65); }
+.hero { isolation:isolate; }
+.hero::before { opacity:.85; background:
+ radial-gradient(circle at 78% 45%, rgba(168,229,195,.14), transparent 22%),
+ radial-gradient(circle at 90% 18%, rgba(233,173,119,.15), transparent 17%),
+ linear-gradient(125deg, transparent 0 64%, rgba(255,255,255,.07) 64.1% 64.25%, transparent 64.35%),
+ repeating-linear-gradient(135deg, transparent 0 86px, rgba(255,255,255,.035) 87px, transparent 89px 174px); }
+.hero::after { color:rgba(255,255,255,.045); animation:watermark-float 12s ease-in-out infinite; }
+.hero-orbit { position:absolute; z-index:0; width:min(43vw,570px); aspect-ratio:1; right:7%; top:50%; transform:translateY(-50%); border:1px solid rgba(168,229,195,.22); border-radius:50%; pointer-events:none; animation:orbit-drift 22s linear infinite; }
+.hero-orbit::before,.hero-orbit::after { content:""; position:absolute; border:1px solid rgba(233,173,119,.26); border-radius:50%; inset:11%; }
+.hero-orbit::after { inset:24%; border-color:rgba(168,229,195,.25); }
+.hero-orbit .orbit-dot { position:absolute; width:13px; height:13px; border-radius:50%; background:var(--gold); top:13%; left:20%; box-shadow:0 0 24px rgba(233,173,119,.8); }
+.hero-orbit svg { position:absolute; inset:22%; width:56%; height:56%; filter:drop-shadow(0 18px 36px rgba(0,0,0,.2)); }
+.hero-content { animation:hero-enter .9s cubic-bezier(.2,.8,.2,1) both; }
+.profile-card { backdrop-filter:blur(10px); }
+.profile-circle { position:relative; }
+.profile-circle::after { content:""; position:absolute; inset:-13px; border:1px dashed rgba(29,118,88,.42); border-radius:50%; animation:orbit-drift 18s linear infinite; }
+.section-title p { display:inline-flex; align-items:center; gap:10px; }
+.section-title p::before,.section-title p::after { content:""; width:22px; height:1px; background:var(--accent-warm); opacity:.75; }
+.project-card { position:relative; overflow:hidden; }
+.project-card::after { content:""; position:absolute; width:150px; height:150px; right:-75px; top:-75px; border:1px solid rgba(29,118,88,.13); border-radius:50%; box-shadow:0 0 0 18px rgba(29,118,88,.025),0 0 0 38px rgba(29,118,88,.02); transition:transform .5s ease; pointer-events:none; }
+.project-card:hover::after { transform:scale(1.3) rotate(25deg); }
+.skill-card { position:relative; overflow:hidden; }
+.skill-card::before { content:""; position:absolute; width:4px; height:0; left:0; bottom:0; background:var(--accent-warm); transition:height .35s ease; }
+.skill-card:hover::before { height:100%; }
+.btn { position:relative; overflow:hidden; }
+.btn::after { content:""; position:absolute; inset:0; transform:translateX(-120%); background:linear-gradient(100deg,transparent,rgba(255,255,255,.25),transparent); transition:transform .55s ease; }
+.btn:hover::after { transform:translateX(120%); }
+.reveal { opacity:0; transform:translateY(24px); filter:blur(3px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.2,1),filter .7s ease; }
+.reveal.is-visible { opacity:1; transform:translateY(0); filter:blur(0); }
+@keyframes hero-enter { from{opacity:0;transform:translateY(25px)} to{opacity:1;transform:translateY(0)} }
+@keyframes orbit-drift { to{transform:rotate(360deg)} }
+@keyframes watermark-float { 0%,100%{transform:translateY(-50%) translateX(0)} 50%{transform:translateY(calc(-50% - 16px)) translateX(-10px)} }
+@media(max-width:850px) { .hero-orbit{width:300px;right:-95px;top:22%;opacity:.48} .hero::after{font-size:240px;right:-25px} }
+@media(max-width:550px) { .hero-orbit{width:220px;right:-100px;top:15%;opacity:.35} .hero::after{font-size:180px} }
+@media(prefers-reduced-motion:reduce) {
+ .hero-orbit,.hero::after,.hero-content,.profile-circle::after {animation:none!important}
+ .reveal{opacity:1;transform:none;filter:none;transition:none}
+ .btn::after{display:none}
+}
+
 </style>
 </head>
 
 <body>
+<div id="scrollProgress" aria-hidden="true"></div>
 
 <!-- NAVIGATION -->
 <header>
@@ -1345,6 +1391,7 @@ Narain<span>Das</span>
 
 <!-- HOME -->
 <section id="home" class="hero">
+<div class="hero-orbit" aria-hidden="true"><span class="orbit-dot"></span><svg viewBox="0 0 220 220" role="img" aria-label="Abstract technology graphic"><defs><linearGradient id="orbGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a8e5c3"/><stop offset="1" stop-color="#e9ad77"/></linearGradient></defs><path d="M110 18 190 64v92l-80 46-80-46V64z" fill="none" stroke="url(#orbGrad)" stroke-width="2"/><path d="M110 48 164 79v62l-54 31-54-31V79z" fill="rgba(168,229,195,.10)" stroke="#a8e5c3" stroke-width="1.5"/><circle cx="110" cy="110" r="23" fill="url(#orbGrad)"/><path d="M110 87v46M87 110h46M94 94l32 32M126 94l-32 32" stroke="#163d32" stroke-width="3" stroke-linecap="round"/></svg></div>
 
 <div class="hero-content">
 
@@ -1792,6 +1839,11 @@ or collaboration? Get in touch.
 </div>
 
 <div class="contact-item">
+<strong>Email</strong>
+<span><a href="mailto:kumarhinduja2@gmail.com" style="color:inherit;text-decoration:none">kumarhinduja2@gmail.com</a></span>
+</div>
+
+<div class="contact-item">
 <strong>Location</strong>
 <span>Jamshoro, Sindh</span>
 </div>
@@ -1892,7 +1944,13 @@ document.getElementById("contactForm").addEventListener("submit", function(event
 
     event.preventDefault();
 
-    document.getElementById("formStatus").textContent = "This form is not connected to email yet, so your message was not sent.";
+    const sender = document.getElementById("name").value.trim();
+    const reply = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const subject = encodeURIComponent("Portfolio enquiry from " + sender);
+    const body = encodeURIComponent("Name: " + sender + "\nReply email: " + reply + "\n\n" + message);
+    window.location.href = "mailto:kumarhinduja2@gmail.com?subject=" + subject + "&body=" + body;
+    document.getElementById("formStatus").textContent = "Your email app should open with the message prepared.";
 
 });
 
@@ -1917,6 +1975,15 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
     });
 }
 
+
+const progressBar = document.getElementById("scrollProgress");
+function updateScrollProgress() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    progressBar.style.width = progress + "%";
+}
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+updateScrollProgress();
 </script>
 
 </body>
