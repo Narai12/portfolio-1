@@ -1300,6 +1300,14 @@ footer {
         transition: none;
     }
 }
+
+/* Added portfolio sections */
+#career .about-text p, #resume .about-text p { color: var(--muted); line-height: 1.9; }
+#case-study .timeline-content p { color: var(--muted); margin-top: 12px; }
+#case-study .timeline-content strong { color: var(--accent); }
+#development .skill-card .btn { margin-top: 18px; }
+@media(max-width:850px) { .nav-links { max-height:75vh; overflow-y:auto; } }
+
 </style>
 </head>
 
@@ -1316,9 +1324,16 @@ Narain<span>Das</span>
 <ul class="nav-links" id="navLinks">
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
+<li><a href="#career">Career Goal</a></li>
 <li><a href="#education">Education</a></li>
 <li><a href="#skills">Skills</a></li>
+<li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
+<li><a href="#case-study">Case Study</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#development">Credentials</a></li>
+<li><a href="#resume">CV</a></li>
+<li><a href="#specialization">Specialization</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 
@@ -1342,9 +1357,7 @@ Hello, I'm <span>Narain Das</span>
 <h2>Software Engineering Student</h2>
 
 <p class="hero-description">
-I am a third-year Software Engineering student at the
-University of Sindh in Jamshoro. My interests include
-software development, databases, and web technologies.
+I am a third-year Software Engineering student at the University of Sindh, Jamshoro. I am building my skills through academic work and personal projects, with interests in mobile application development, web technologies, databases, and parallel and distributed computing.
 </p>
 
 </div>
@@ -1386,8 +1399,7 @@ University of Sindh in Jamshoro.
 </p>
 
 <p>
-I am developing my skills in software development,
-databases, and web technologies.
+I am developing my skills in mobile application development, web technologies, databases, and core software engineering practices.
 </p>
 
 <p>
@@ -1567,8 +1579,9 @@ data handling.
 
 <div class="project-tags">
 <span>Android</span>
-<span>Java</span>
-<span>Security</span>
+<span>Kotlin</span>
+<span>Android</span>
+<span>Steganography</span>
 </div>
 
 </div>
@@ -1618,17 +1631,16 @@ structured information.
 
 <div class="project-number">04</div>
 
-<h3>Android Application</h3>
+<h3>Parallel & Distributed Computing</h3>
 
 <p>
-An Android app built as part of my mobile development
-studies.
+Academic learning area focused on parallel programming, distributed systems, and how computing tasks can be coordinated. Practical work will be added as it is completed.
 </p>
 
 <div class="project-tags">
-<span>Android</span>
-<span>Mobile</span>
-<span>UI</span>
+<span>Parallel Computing</span>
+<span>Distributed Systems</span>
+<span>Academic</span>
 </div>
 
 </div>
@@ -1676,6 +1688,69 @@ completed as part of my coursework.
 </div>
 </section>
 
+
+
+<!-- CAREER OBJECTIVE -->
+<section id="career" class="section">
+<div class="section-title"><p>MY DIRECTION</p><h2>Career Objective</h2></div>
+<div class="about-text" style="max-width:850px;margin:auto;text-align:center">
+<p>My objective is to grow as a software developer by strengthening my programming fundamentals and building useful, reliable applications. I am particularly interested in mobile application development while continuing to learn web technologies, databases, parallel programming, and distributed systems.</p>
+</div>
+</section>
+
+<!-- PROJECT CASE STUDY -->
+<section id="case-study" class="section dark-section">
+<div class="section-title"><p>FEATURED WORK</p><h2>Project Case Study</h2></div>
+<div class="timeline">
+<div class="timeline-content">
+<span>Academic / Personal Development</span>
+<h3>StegoSafe — Android Application</h3>
+<p><strong>Goal:</strong> Explore image steganography through an Android application.</p>
+<p><strong>Role:</strong> Student developer working on the application as a learning project.</p>
+<p><strong>Technology:</strong> Kotlin, Android Studio, XML layouts.</p>
+<p><strong>Learning focus:</strong> Android project structure, user interface development, and implementing a steganography workflow. Further implementation details and screenshots can be added as the project progresses.</p>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+<div class="section-title"><p>LEARNING BY DOING</p><h2>Academic Experience & Training</h2></div>
+<div class="timeline"><div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+<span>2024 – Present</span><h3>Software Engineering Coursework</h3><h4>University of Sindh, Jamshoro</h4>
+<p>Developing practical experience through university coursework, programming exercises, laboratory tasks, and personal software projects.</p>
+</div></div></div>
+</section>
+
+<!-- PROFESSIONAL DEVELOPMENT -->
+<section id="development" class="section dark-section">
+<div class="section-title"><p>CONTINUOUS LEARNING</p><h2>Certifications & Achievements</h2></div>
+<div class="skills-container">
+<div class="skill-card"><div class="skill-icon">01</div><h3>Certifications</h3><p>No external certifications are listed at present. Relevant verified courses and certificates will be added when completed.</p></div>
+<div class="skill-card"><div class="skill-icon">02</div><h3>Achievements</h3><p>Academic and professional achievements will be added when there are verified awards, competition results, or other accomplishments to share.</p></div>
+<div class="skill-card"><div class="skill-icon">03</div><h3>Professional Profiles</h3><p>Explore my source code and ongoing learning on GitHub.</p><a class="btn secondary" href="https://github.com/Narai12" target="_blank" rel="noopener noreferrer">Visit GitHub</a></div>
+</div>
+</section>
+
+<!-- SPECIALIZATION -->
+<section id="specialization" class="section">
+<div class="section-title"><p>AREAS OF INTEREST</p><h2>Specializations & Tools</h2></div>
+<div class="skills-container">
+<div class="skill-card"><div class="skill-icon">APP</div><h3>Mobile Application Development</h3><p>Learning Android application development with Kotlin and Android Studio.</p></div>
+<div class="skill-card"><div class="skill-icon">WEB</div><h3>Web Development</h3><p>Building web pages and responsive interfaces using HTML, CSS, and JavaScript.</p></div>
+<div class="skill-card"><div class="skill-icon">PDC</div><h3>Parallel & Distributed Computing</h3><p>Academic area of study: parallel programming concepts, distributed systems, and computing workflows.</p></div>
+<div class="skill-card"><div class="skill-icon">TOOLS</div><h3>Development Tools</h3><p>Visual Studio Code, Android Studio, Git, and GitHub.</p></div>
+</div>
+</section>
+
+<!-- CV -->
+<section id="resume" class="section dark-section">
+<div class="section-title"><p>PROFESSIONAL DOCUMENT</p><h2>Resume / CV</h2></div>
+<div class="about-text" style="max-width:760px;margin:auto;text-align:center">
+<p>My downloadable CV will be published here after I add and verify the latest PDF. Please contact me through my GitHub profile in the meantime.</p>
+<a class="btn secondary" href="https://github.com/Narai12" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+</div>
+</section>
 
 <!-- CONTACT -->
 <section id="contact" class="section">
