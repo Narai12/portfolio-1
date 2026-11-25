@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#08151c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -578,7 +578,7 @@ body {
 }
 
 h1, h2, h3, h4, .logo {
-    font-family: "Manrope", sans-serif;
+    font-family: "Sora", sans-serif;
 }
 
 header {
@@ -1411,10 +1411,46 @@ footer{background:#050914;border-top:1px solid rgba(130,160,255,.12)}
 @media(max-width:850px){.hero{background:linear-gradient(160deg,#101b38,#102d3b)}.nav-links{background:rgba(8,13,27,.98)}}
 @media(prefers-reduced-motion:reduce){.hero-content,.profile-card,.profile-circle::after{animation:none!important}.skill-card,.project-card,.btn{transition:none!important}}
 
+
+/* === TEAL / BLUE PORTFOLIO VISUAL SYSTEM === */
+:root{--mint:#2dd4bf;--blue:#7c8cff;--background:#08151c;--surface:#10232b;--accent:#2dd4bf;--accent-warm:#7c8cff}
+body{background:#08151c;color:#eaf7f5;font-family:"DM Sans",sans-serif}
+h1,h2,h3,h4,.logo{font-family:"Sora",sans-serif}
+.hero{position:relative;overflow:hidden;max-width:none;padding-left:max(30px,calc((100% - 1140px)/2));padding-right:max(30px,calc((100% - 1140px)/2));background:transparent}
+.hero-content,.profile-card{position:relative;z-index:2}
+#particleCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.glow-blob{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(85px);opacity:.2;pointer-events:none;z-index:0;animation:blobFloat 15s ease-in-out infinite alternate}
+.blob-teal{background:#2dd4bf;right:12%;top:8%}.blob-blue{background:#4263ff;right:35%;bottom:2%;animation-delay:-7s}
+@keyframes blobFloat{to{transform:translate(55px,-35px) scale(1.16)}}
+.hero h1 span{background:linear-gradient(100deg,#2dd4bf,#7c8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.typing-line{min-height:1.5em}.typing-caret{color:#2dd4bf;animation:caretBlink .8s steps(2) infinite}
+@keyframes caretBlink{50%{opacity:0}}
+.avatar-wrap{width:190px;height:190px;margin:0 auto 22px;display:grid;place-items:center;position:relative}
+.avatar-wrap::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(from 0deg,#2dd4bf,#7c8cff,#2dd4bf);animation:ringSpin 7s linear infinite}
+.avatar-wrap::after{content:"";position:absolute;inset:-2px;border-radius:50%;background:#10232b}
+@keyframes ringSpin{to{transform:rotate(360deg)}}
+.profile-circle{width:178px;height:178px;margin:0;position:relative;z-index:1;background:transparent;padding:0}
+.profile-circle svg{width:100%;height:100%;display:block}
+.skill-icon{background:linear-gradient(135deg,#2dd4bf,#7c8cff);color:#07151b;box-shadow:0 8px 22px rgba(45,212,191,.14)}
+.project-card{background:linear-gradient(145deg,rgba(16,35,43,.96),rgba(13,27,43,.95));border-color:rgba(124,140,255,.17)}
+.project-card::before{content:"";position:absolute;inset:-120% -40%;background:linear-gradient(110deg,transparent 42%,rgba(45,212,191,.12) 50%,transparent 58%);transform:translateX(-70%);transition:transform .8s;pointer-events:none}
+.project-card:hover::before{transform:translateX(70%)}
+.project-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:-28px 0 35px}
+.filter-btn{padding:9px 19px;border-radius:30px;border:1px solid rgba(45,212,191,.35);background:rgba(16,35,43,.8);color:#c9e8e4;font:600 14px "DM Sans",sans-serif;cursor:pointer;transition:.25s}
+.filter-btn:hover,.filter-btn.active{background:linear-gradient(100deg,#2dd4bf,#7c8cff);color:#07151b;border-color:transparent}
+.project-card.is-filtered-out{display:none}
+.nav-links a.active{color:#2dd4bf}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #7c8cff;outline-offset:4px}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:3000;background:#2dd4bf;color:#08151c;padding:10px 16px;border-radius:8px;font-weight:700}
+.skip-link:focus{top:12px}
+@media(max-width:850px){.hero{padding-left:30px;padding-right:30px}.hero-orbit{opacity:.3;right:-10%}.glow-blob{width:230px;height:230px}}
+@media(prefers-reduced-motion:reduce){.glow-blob,.avatar-wrap::before,.typing-caret{animation:none!important}.project-card::before{display:none}}
+
 </style>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div id="scrollProgress" aria-hidden="true"></div>
 
 <!-- NAVIGATION -->
@@ -1446,8 +1482,11 @@ Narain<span>Das</span>
 </header>
 
 
+<main id="main-content">
 <!-- HOME -->
 <section id="home" class="hero">
+<canvas id="particleCanvas" aria-hidden="true"></canvas>
+<div class="glow-blob blob-teal" aria-hidden="true"></div><div class="glow-blob blob-blue" aria-hidden="true"></div>
 <div class="hero-orbit" aria-hidden="true"><span class="orbit-dot"></span><svg viewBox="0 0 220 220" role="img" aria-label="Abstract technology graphic"><defs><linearGradient id="orbGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a8e5c3"/><stop offset="1" stop-color="#e9ad77"/></linearGradient></defs><path d="M110 18 190 64v92l-80 46-80-46V64z" fill="none" stroke="url(#orbGrad)" stroke-width="2"/><path d="M110 48 164 79v62l-54 31-54-31V79z" fill="rgba(168,229,195,.10)" stroke="#a8e5c3" stroke-width="1.5"/><circle cx="110" cy="110" r="23" fill="url(#orbGrad)"/><path d="M110 87v46M87 110h46M94 94l32 32M126 94l-32 32" stroke="#163d32" stroke-width="3" stroke-linecap="round"/></svg></div>
 
 <div class="hero-content">
@@ -1458,7 +1497,7 @@ Narain<span>Das</span>
 Hello, I'm <span>Narain Das</span>
 </h1>
 
-<h2>Software Engineering Student</h2>
+<h2 class="typing-line"><span id="typingText">Software Engineering Student</span><span class="typing-caret" aria-hidden="true">|</span></h2>
 
 <p class="hero-description">
 I am a third-year Software Engineering student at the University of Sindh, Jamshoro. I am building my skills through academic work and personal projects, with interests in mobile application development, web technologies, and databases.
@@ -1474,9 +1513,7 @@ I am a third-year Software Engineering student at the University of Sindh, Jamsh
 
 <div class="profile-card">
 
-<div class="profile-circle">
-ND
-</div>
+<div class="avatar-wrap"><div class="profile-circle"><svg viewBox="0 0 120 120" role="img" aria-label="ND initials avatar"><defs><linearGradient id="avatarGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2dd4bf"/><stop offset="1" stop-color="#7c8cff"/></linearGradient></defs><circle cx="60" cy="60" r="56" fill="url(#avatarGrad)"/><text x="60" y="73" text-anchor="middle" font-family="Sora,sans-serif" font-size="38" font-weight="800" fill="#08151c">ND</text></svg></div></div>
 
 <h3>Narain Das</h3>
 
@@ -1673,9 +1710,10 @@ and software projects.
 <h2>Projects</h2>
 </div>
 
+<div class="project-filters" role="group" aria-label="Filter projects"><button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button><button class="filter-btn" type="button" data-filter="security" aria-pressed="false">Security</button><button class="filter-btn" type="button" data-filter="web" aria-pressed="false">Web</button><button class="filter-btn" type="button" data-filter="apps" aria-pressed="false">Apps</button></div>
 <div class="projects-container">
 
-<div class="project-card">
+<div class="project-card" data-category="apps security">
 <div class="project-number">01</div>
 <h3>ShadowByte</h3>
 <p>An Android app exploring image steganography and secure data handling.</p>
@@ -1690,7 +1728,7 @@ and software projects.
 </div>
 </div>
 
-<div class="project-card">
+<div class="project-card" data-category="web">
 <div class="project-number">02</div>
 <h3>Sentiment Analysis Dashboard</h3>
 <p>A Python and Streamlit dashboard that analyzes written feedback as positive, negative, or neutral. It combines VADER, TextBlob, keyword scoring, and text-pattern analysis, with interactive charts, sentiment insights, and selectable visual themes.</p>
@@ -1708,7 +1746,7 @@ and software projects.
 </div>
 </div>
 
-<div class="project-card">
+<div class="project-card" data-category="web apps">
 <div class="project-number">03</div>
 <h3>LifeBridge HMS</h3>
 <p>A full-stack hospital management website with patient registration and login, doctor and department directories, appointment booking and management, and an admin role for managing doctors and appointment status.</p>
@@ -1878,6 +1916,8 @@ Send Message
 </section>
 
 
+</main>
+
 <!-- FOOTER -->
 <footer>
 
@@ -1971,6 +2011,30 @@ function updateScrollProgress() {
 }
 window.addEventListener("scroll", updateScrollProgress, { passive: true });
 updateScrollProgress();
+
+/* PARTICLE NETWORK */
+(function(){
+ const canvas=document.getElementById("particleCanvas"),ctx=canvas&&canvas.getContext("2d"),hero=document.getElementById("home");
+ if(!ctx||!hero)return;
+ const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ let w=0,h=0,points=[],raf=0;
+ function resize(){const dpr=Math.min(window.devicePixelRatio||1,2);w=hero.clientWidth;h=hero.clientHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);points=Array.from({length:Math.min(75,Math.floor(w/17))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}));}
+ function draw(){ctx.clearRect(0,0,w,h);for(let i=0;i<points.length;i++){const p=points[i];if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;}ctx.beginPath();ctx.arc(p.x,p.y,1.7,0,Math.PI*2);ctx.fillStyle="rgba(45,212,191,.7)";ctx.fill();for(let j=i+1;j<points.length;j++){const q=points[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);if(d<125){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle="rgba(45,212,191,"+(1-d/125)*.18+")";ctx.lineWidth=1;ctx.stroke();}}}if(!reduce)raf=requestAnimationFrame(draw);}
+ resize();draw();window.addEventListener("resize",()=>{cancelAnimationFrame(raf);resize();draw();},{passive:true});
+})();
+ 
+/* TYPEWRITER */
+(function(){const el=document.getElementById("typingText");if(!el)return;const words=["Software Engineering Student","Web Developer","App Developer","Technology Learner"];if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=words[0];return;}let wi=0,ci=words[0].length,del=false;function tick(){const word=words[wi];el.textContent=word.slice(0,ci);if(!del&&ci===word.length){del=true;setTimeout(tick,1300);return;}if(del&&ci===0){del=false;wi=(wi+1)%words.length;}ci+=del?-1:1;setTimeout(tick,del?42:75);}setTimeout(tick,1500);})();
+
+/* PROJECT FILTER */
+document.querySelectorAll(".filter-btn").forEach(btn=>btn.addEventListener("click",()=>{const filter=btn.dataset.filter;document.querySelectorAll(".filter-btn").forEach(b=>{const active=b===btn;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));});document.querySelectorAll(".project-card").forEach(card=>card.classList.toggle("is-filtered-out",filter!=="all"&&!card.dataset.category.split(" ").includes(filter)));}));
+
+/* ACTIVE NAVIGATION */
+(function(){const links=[...document.querySelectorAll(".nav-links a")];const sections=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);if(!("IntersectionObserver"in window))return;const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id));}}),{rootMargin:"-35% 0px -55% 0px"});sections.forEach(s=>obs.observe(s));})();
+
+/* DESKTOP CARD TILT */
+if(window.matchMedia("(hover:hover) and (pointer:fine)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.querySelectorAll(".project-card,.skill-card").forEach(card=>{card.addEventListener("mousemove",e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform="perspective(900px) rotateX("+(-y*4)+"deg) rotateY("+(x*5)+"deg) translateY(-5px)";});card.addEventListener("mouseleave",()=>card.style.transform="");});}
+
 </script>
 
 </body>
