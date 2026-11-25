@@ -1446,6 +1446,50 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:850px){.hero{padding-left:30px;padding-right:30px}.hero-orbit{opacity:.3;right:-10%}.glow-blob{width:230px;height:230px}}
 @media(prefers-reduced-motion:reduce){.glow-blob,.avatar-wrap::before,.typing-caret{animation:none!important}.project-card::before{display:none}}
 
+
+
+
+/* FINAL CONSISTENT THEME: requested teal / blue system */
+:root{
+ color-scheme:dark;
+ --background:#08151c;
+ --surface:#10232b;
+ --surface-soft:rgba(16,35,43,.88);
+ --text:#eaf7f5;
+ --muted:#a9c3c1;
+ --accent:#2dd4bf;
+ --accent-warm:#7c8cff;
+}
+html{scroll-behavior:smooth}
+body{background:#08151c!important;color:#eaf7f5!important;font-family:"DM Sans",sans-serif}
+h1,h2,h3,h4,.logo{font-family:"Sora",sans-serif}
+header{background:rgba(8,21,28,.88)!important;border-bottom:1px solid rgba(45,212,191,.14)!important}
+.nav-links a{color:#d5e9e7}
+.nav-links a:hover,.nav-links a.active{color:#2dd4bf}
+.hero{background:radial-gradient(ellipse at 78% 38%,rgba(45,212,191,.12),transparent 35%),linear-gradient(125deg,#08151c,#10232b 65%,#111d39)!important;color:#eaf7f5}
+.hero h1,.hero h2,.section-title h2,.about-text h3,.contact-info h3,.timeline-content h3,.skill-card h3,.project-card h3{color:#eaf7f5}
+.hero h1 span{background:linear-gradient(100deg,#2dd4bf,#7c8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-description,.about-text p,.skill-card p,.project-card p,.contact-info>p,.profile-card p{color:#a9c3c1}
+.section{background:transparent}
+.dark-section{background:rgba(16,35,43,.55)!important;border-color:rgba(124,140,255,.12)!important}
+.info-box div,.timeline-content,.skill-card,.project-card{background:linear-gradient(145deg,rgba(16,35,43,.97),rgba(13,27,43,.97))!important;border:1px solid rgba(124,140,255,.18)!important;color:#eaf7f5}
+.profile-card{background:linear-gradient(145deg,rgba(16,35,43,.98),rgba(13,27,43,.98))!important;border:1px solid rgba(45,212,191,.24)!important}
+.skill-icon{background:linear-gradient(135deg,#2dd4bf,#7c8cff)!important;color:#08151c!important}
+.project-tags span{color:#8dece0;border-color:rgba(45,212,191,.3)}
+.btn{background:linear-gradient(100deg,#2dd4bf,#7c8cff);color:#08151c;border:0}
+.btn.secondary{background:rgba(124,140,255,.1);color:#dcdcff;border:1px solid rgba(124,140,255,.5)}
+input,textarea{background:#10232b;color:#eaf7f5;border-color:rgba(124,140,255,.25)}
+footer{background:#050d12}
+.avatar-wrap::before{background:conic-gradient(#2dd4bf,#7c8cff,#2dd4bf)}
+.glow-blob{opacity:.24}
+.skills-marquee{overflow:hidden;margin:36px 0 4px;padding:15px 0;border-top:1px solid rgba(45,212,191,.16);border-bottom:1px solid rgba(124,140,255,.16);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.skills-marquee-track{display:flex;align-items:center;gap:34px;width:max-content;animation:skillsMarquee 28s linear infinite}
+.skills-marquee-track span{font:600 14px "DM Sans",sans-serif;letter-spacing:.08em;color:#a9c3c1;white-space:nowrap}
+.skills-marquee-track span::before{content:"✦";color:#2dd4bf;margin-right:12px}
+@keyframes skillsMarquee{to{transform:translateX(-50%)}}
+@media(hover:hover) and (pointer:fine){.skills-marquee:hover .skills-marquee-track{animation-play-state:paused}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.skills-marquee-track{animation:none}.glow-blob,.avatar-wrap::before,.hero-content,.profile-card{animation:none!important}}
+
 </style>
 </head>
 
@@ -1698,6 +1742,13 @@ and software projects.
 <p>Applying design and development principles to software.</p>
 </div>
 
+</div>
+
+<div class="skills-marquee" aria-label="Technologies and tools">
+  <div class="skills-marquee-track">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Kotlin</span><span>Python</span><span>Streamlit</span><span>SQL</span><span>Git &amp; GitHub</span>
+    <span aria-hidden="true">HTML</span><span aria-hidden="true">CSS</span><span aria-hidden="true">JavaScript</span><span aria-hidden="true">Kotlin</span><span aria-hidden="true">Python</span><span aria-hidden="true">Streamlit</span><span aria-hidden="true">SQL</span><span aria-hidden="true">Git &amp; GitHub</span>
+  </div>
 </div>
 </section>
 
