@@ -1353,6 +1353,64 @@ body { overflow-x:hidden; }
  .btn::after{display:none}
 }
 
+
+/* ===== 2026 POLISH: deep navy / electric cyan + refined motion ===== */
+:root{
+ --background:#080d1b;--surface:#111a2e;--surface-soft:rgba(19,29,51,.82);
+ --text:#f4f7ff;--muted:#aab6d0;--accent:#72e4ff;--accent-warm:#b69cff;
+}
+html{scroll-behavior:smooth}
+body{
+ background-color:#080d1b;
+ background-image:radial-gradient(ellipse at 15% 8%,rgba(91,91,220,.16),transparent 34%),
+ radial-gradient(ellipse at 90% 55%,rgba(0,205,235,.09),transparent 32%),
+ linear-gradient(rgba(130,160,255,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(130,160,255,.035) 1px,transparent 1px);
+ background-size:auto,auto,46px 46px,46px 46px;background-attachment:fixed;color:#f4f7ff;
+}
+header{background:rgba(8,13,27,.82);border-bottom:1px solid rgba(130,160,255,.15);backdrop-filter:blur(20px)}
+.logo span,.hero h1 span,.section-title p,.small-text,.info-box strong,.timeline-content span,.project-number,.contact-item strong,.footer-content h3{color:#72e4ff}
+.nav-links a{color:#d9e2f7;transition:color .25s ease,transform .25s ease}
+.nav-links a:hover{color:#72e4ff;transform:translateY(-2px)}
+.hero{
+ background:linear-gradient(120deg,#101b38 0%,#101b35 48%,#102d3b 100%);
+ color:#f4f7ff;isolation:isolate;
+}
+.hero::before{opacity:.55;background-image:radial-gradient(circle at 75% 45%,rgba(114,228,255,.16),transparent 25%),linear-gradient(125deg,transparent 0 65%,rgba(182,156,255,.12) 65.1% 65.3%,transparent 65.4%)}
+.hero::after{color:rgba(114,228,255,.045)}
+.hero h1{color:#f7f9ff}.hero h1 span{color:#72e4ff}
+.hero h2{color:#d8e4fb}.hero-description{color:#bdcbe3}
+.small-text::before{background:#b69cff}
+.profile-card{background:linear-gradient(145deg,rgba(25,40,72,.98),rgba(13,28,48,.98));border:1px solid rgba(114,228,255,.28);box-shadow:0 24px 80px rgba(0,0,0,.28)}
+.profile-card h3{color:#f4f7ff}.profile-card p{color:#aab6d0}
+.profile-circle{background:linear-gradient(135deg,#72e4ff,#b69cff);color:#091426;border-color:rgba(255,255,255,.22)}
+.dark-section{background:rgba(13,21,41,.92);border-color:rgba(130,160,255,.10)}
+.section-title h2,.about-text h3,.contact-info h3,.timeline-content h3,.skill-card h3,.project-card h3{color:#f4f7ff}
+.info-box div,.timeline-content,.skill-card,.project-card{background:linear-gradient(145deg,rgba(20,31,56,.92),rgba(14,24,44,.92));border:1px solid rgba(151,174,225,.13);border-radius:14px;box-shadow:0 12px 35px rgba(0,0,0,.12)}
+.info-box span,.timeline-content h4,.contact-item span{color:#c3cfe5}
+.skill-card:hover,.project-card:hover{transform:translateY(-9px);border-color:rgba(114,228,255,.55);box-shadow:0 20px 45px rgba(0,0,0,.23)}
+.skill-icon{background:rgba(114,228,255,.12);color:#72e4ff;border-color:rgba(114,228,255,.3)}
+.project-tags span{border-color:rgba(114,228,255,.35);color:#8ceaff;background:rgba(114,228,255,.06)}
+.btn{background:linear-gradient(110deg,#72e4ff,#9edfff);color:#071426;border:1px solid transparent;border-radius:8px;box-shadow:0 8px 25px rgba(75,194,230,.13);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.btn:hover{transform:translateY(-4px);box-shadow:0 13px 32px rgba(75,194,230,.25);filter:brightness(1.06)}
+.btn.secondary{background:rgba(182,156,255,.08);color:#e5ddff;border:1px solid rgba(182,156,255,.55);box-shadow:none}
+.btn.secondary:hover{background:rgba(182,156,255,.16)}
+input,textarea{background:#101a30;color:#f4f7ff;border-color:rgba(151,174,225,.2)}
+input:focus,textarea:focus{border-color:#72e4ff;box-shadow:0 0 0 3px rgba(114,228,255,.12)}
+footer{background:#050914;border-top:1px solid rgba(130,160,255,.12)}
+#scrollProgress{background:linear-gradient(90deg,#72e4ff,#b69cff);height:3px;box-shadow:0 0 12px rgba(114,228,255,.5)}
+.hero-content{animation:heroLift .85s cubic-bezier(.2,.75,.25,1) both}
+.profile-card{animation:cardFloatIn 1s .12s cubic-bezier(.2,.75,.25,1) both}
+.profile-circle{position:relative;overflow:hidden}
+.profile-circle::after{content:"";position:absolute;inset:-60%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.42) 50%,transparent 58%);transform:translateX(-70%) rotate(15deg);animation:shinePass 5s ease-in-out 1.2s infinite}
+.project-card,.skill-card{transition:transform .35s cubic-bezier(.2,.75,.25,1),border-color .3s ease,box-shadow .35s ease}
+.section-title h2{letter-spacing:-.8px}
+@keyframes heroLift{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardFloatIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes shinePass{0%,65%,100%{transform:translateX(-75%) rotate(15deg)}82%{transform:translateX(75%) rotate(15deg)}}
+@media(max-width:850px){.hero{background:linear-gradient(160deg,#101b38,#102d3b)}.nav-links{background:rgba(8,13,27,.98)}}
+@media(prefers-reduced-motion:reduce){.hero-content,.profile-card,.profile-circle::after{animation:none!important}.skill-card,.project-card,.btn{transition:none!important}}
+
 </style>
 </head>
 
@@ -1372,7 +1430,6 @@ Narain<span>Das</span>
 <li><a href="#about">About</a></li>
 <li><a href="#career">Career Goal</a></li>
 <li><a href="#education">Education</a></li>
-<li><a href="#skills">Skills</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
 <li><a href="#case-study">Case Study</a></li>
@@ -1406,6 +1463,11 @@ Hello, I'm <span>Narain Das</span>
 <p class="hero-description">
 I am a third-year Software Engineering student at the University of Sindh, Jamshoro. I am building my skills through academic work and personal projects, with interests in mobile application development, web technologies, databases, and parallel and distributed computing.
 </p>
+
+<div class="buttons hero-actions">
+<a class="btn" href="#projects">Explore My Projects</a>
+<a class="btn secondary" href="#contact">Contact Me</a>
+</div>
 
 </div>
 
@@ -1627,8 +1689,12 @@ data handling.
 <div class="project-tags">
 <span>Android</span>
 <span>Kotlin</span>
-<span>Android</span>
+<span>XML</span>
 <span>Steganography</span>
+</div>
+
+<div class="project-actions" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;">
+<a class="btn" href="#case-study">View Development Case Study</a>
 </div>
 
 </div>
